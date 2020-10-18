@@ -11,13 +11,11 @@ class _MyFirstPageState extends State<MyFirstPage> {
   int _count = 0;
 
   String _msg1(bool isEnabled, int count) {
-    if(!isEnabled) {
+    if (!isEnabled) {
       return '';
-    }
-    else if (count==0) {
+    } else if (count == 0) {
       return 'Click Me';
-    }
-    else{
+    } else {
       return 'Clicked $count';
     }
   }
@@ -27,9 +25,10 @@ class _MyFirstPageState extends State<MyFirstPage> {
     Object onPressed1() {
       if (_enabled) {
         return () {
-          setState(() {
-            _count++;
-          },
+          setState(
+            () {
+              _count++;
+            },
           );
         };
       } else {
@@ -40,10 +39,11 @@ class _MyFirstPageState extends State<MyFirstPage> {
     Object resetCounter() {
       if (_enabled) {
         return () {
-          setState(() {
-            _count = 0;
-            print('Count Reset!');
-          },
+          setState(
+            () {
+              _count = 0;
+              print('Count Reset!');
+            },
           );
         };
       } else {
@@ -95,19 +95,20 @@ class _MyFirstPageState extends State<MyFirstPage> {
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.all(20),
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      elevation: 8,
-                      textColor: Colors.red.shade100,
-                      color: Colors.blueAccent,
-                      highlightColor: Colors.red,
-                      splashColor: Colors.green.shade300,
-                      padding: EdgeInsets.all(20.0),
-                      onPressed: resetCounter(),
-                      child: Text(_msg2),
-                    )),
+                  margin: EdgeInsets.all(20),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 8,
+                    textColor: Colors.red.shade100,
+                    color: Colors.blueAccent,
+                    highlightColor: Colors.red,
+                    splashColor: Colors.green.shade300,
+                    padding: EdgeInsets.all(20.0),
+                    onPressed: resetCounter(),
+                    child: Text(_msg2),
+                  ),
+                ),
               ],
             ),
           ],
