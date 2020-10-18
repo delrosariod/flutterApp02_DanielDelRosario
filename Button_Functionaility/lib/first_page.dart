@@ -7,9 +7,21 @@ class MyFirstPage extends StatefulWidget {
 
 class _MyFirstPageState extends State<MyFirstPage> {
   bool _enabled = false;
-  String _msg1 = '';
   String _msg2 = '';
   int _count = 0;
+
+  String _msg1(bool isEnabled, int count) {
+    if(!isEnabled) {
+      return '';
+    }
+    else if (count==0) {
+      return 'Click Me';
+    }
+    else{
+      return 'Clicked $count';
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +70,9 @@ class _MyFirstPageState extends State<MyFirstPage> {
                       _enabled = onChangedValue;
                       setState(() {
                         if (_enabled) {
-                          _msg1 = 'Enabled';
-                          print('_enabled is true');
+                          _msg2 = 'Reset';
                         } else {
-                          _msg1 = '';
-                          print('_enabled is false');
+                          _msg2 = '';
                         }
                       });
                     }),
@@ -83,7 +93,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
                     splashColor: Colors.green.shade300,
                     padding: EdgeInsets.all(20.0),
                     onPressed: onPressed1(),
-                    child: Text(_msg1),
+                    child: Text(_msg1(_enabled,_count)),
                   ),
                 ),
                 Container(
@@ -98,7 +108,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
                       splashColor: Colors.green.shade300,
                       padding: EdgeInsets.all(20.0),
                       onPressed: onPressed1(),
-                      child: Text(_msg1),
+                      child: Text(_msg2),
                     )),
               ],
             ),
