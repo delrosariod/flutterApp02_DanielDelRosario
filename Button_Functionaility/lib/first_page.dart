@@ -39,18 +39,19 @@ class _MyFirstPageState extends State<MyFirstPage> {
       }
     }
 
-    // Object resetCounter() {
-    //   if (_enabled) {
-
-    //     return () {
-    //       setState(() {
-
-    //       });
-    //     }();
-    //   } else {
-    //     return null;
-    //   }
-    // }
+    Object resetCounter() {
+      if (_enabled) {
+        return () {
+          setState(() {
+            _count = 0;
+            print('Count Reset!');
+          },
+          );
+        };
+      } else {
+        return null;
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +67,6 @@ class _MyFirstPageState extends State<MyFirstPage> {
                 Switch(
                     value: _enabled,
                     onChanged: (bool onChangedValue) {
-                      print('onChangedValue is $onChangedValue');
                       _enabled = onChangedValue;
                       setState(() {
                         if (_enabled) {
@@ -93,7 +93,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
                     splashColor: Colors.green.shade300,
                     padding: EdgeInsets.all(20.0),
                     onPressed: onPressed1(),
-                    child: Text(_msg1(_enabled,_count)),
+                    child: Text(_msg1(_enabled, _count)),
                   ),
                 ),
                 Container(
@@ -107,7 +107,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
                       highlightColor: Colors.red,
                       splashColor: Colors.green.shade300,
                       padding: EdgeInsets.all(20.0),
-                      onPressed: onPressed1(),
+                      onPressed: resetCounter(),
                       child: Text(_msg2),
                     )),
               ],
