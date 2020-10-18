@@ -29,7 +29,6 @@ class _MyFirstPageState extends State<MyFirstPage> {
         return () {
           setState(() {
             _count++;
-            print('count is $_count');
           },
           );
         };
